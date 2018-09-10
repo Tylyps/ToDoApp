@@ -13,13 +13,14 @@ class App extends Component {
 
   onChangeInputHandler = event => this.setState({value: event.target.value})
   render() {
-    const { tasks } = this.state
+    const { tasks, value } = this.state
+
     return (
       <div className="app">
         <div className="title">ToDo App!</div>
         <div className="textInput-block">
           <label>Input task:</label>
-          <input onChange={this.onChangeInputHandler} value={this.state.value}></input>
+          <input onChange={this.onChangeInputHandler} value={value}></input>
           <button onClick={this.addTask}>Add</button>
         </div>
         <div>
