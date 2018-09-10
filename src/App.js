@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
+import './App.scss';
 
 class App extends Component {
   state = {
@@ -12,12 +13,13 @@ class App extends Component {
   removeTask = idToRemove => this.setState(( prevState ) => ({tasks: prevState.tasks.filter((task, id) => id !== idToRemove )}))
 
   onChangeInputHandler = event => this.setState({value: event.target.value})
+
   render() {
     const { tasks, value } = this.state
 
     return (
       <div className="app">
-        <div className="title">ToDo App!</div>
+        <div className="title">ToDo App!!!!</div>
         <div className="textInput-block">
           <label>Input task:</label>
           <input onChange={this.onChangeInputHandler} value={value}></input>
