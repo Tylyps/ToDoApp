@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Title = ({ text, tag: CustomTag }) => (
-        <div className="app__title">
-            <CustomTag>{text}</CustomTag>
-        </div>
-    );
+const Title = ({ text, tag: CustomTag }) => <CustomTag className='title'>{text}</CustomTag>;
 
 Title.PropTypes = {
     title: PropTypes.string.isRequired,
