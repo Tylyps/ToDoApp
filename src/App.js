@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import './App.css';
+import './App.scss';
 
 class App extends Component {
   state = {
@@ -17,13 +19,13 @@ class App extends Component {
 
     return (
       <div className="app">
-        <div className="app__title">ToDo App!!!!</div>
-        <div className="app__input">
+        <div className="title">ToDo App!!!!</div>
+        <div className="textInput-block">
           <label>Input task:</label>
           <input onChange={this.onChangeInputHandler} value={value}></input>
           <button onClick={this.addTask}>Add</button>
         </div>
-        <div className="app__list">
+        <div>
           <ul className="tasksList">
             {tasks.map((text, id) => <li className="task" key={id}>{text}<button className="removeButton" onClick={() => this.removeTask(id)}>Remove</button></li>)}
           </ul>

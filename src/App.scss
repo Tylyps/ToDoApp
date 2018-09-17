@@ -15,17 +15,17 @@
     text-align: center;
 }
 
-.app__title {
+.title {
     font-size: 40px;
     font-weight: 700;
-    text-shadow: $text-shadow;
+    text-shadow: 0px 2px 1px #F00, 2px 0px 1px #0F0, -2px 0px 1px #00F, 0px -2px 1px #F0F;
 }
 
-.app__input {
+.textInput-block {
     font-size: 20px;
     padding: 10px;
 }
-.app__input input{
+.textInput-block input{
     height: 20px;
 }
 .tasksList {
