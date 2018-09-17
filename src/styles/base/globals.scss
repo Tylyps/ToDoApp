@@ -4,3 +4,16 @@ body {
     font-family: sans-serif;
     min-height: 100vh;
   }
+
+.icon {
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
+}
+button {
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

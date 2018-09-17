@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Title from './components/Title';
 import Input from './components/Input';
 import Button from './components/Button';
+import Plus from './templates/add.svg';
 
 class App extends Component {
   state = {
@@ -30,7 +31,7 @@ class App extends Component {
           <Button
             onClickHandler={this.addTask}
             text={'Add'}
-          />
+          ><img className='icon' src={Plus} alt='add'/></Button>
         </div>
         <div className="app__list">
           <ul className="tasksList">

@@ -1,7 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {isEmpty} from 'lodash';
 
-const Button = ({onClickHandler, text, children, ...rest}) => <button onClick={onClickHandler} {...rest}>{text}{children}</button>;
+const Button = ({onClickHandler, text, children, ...rest}) => {
+    if(isEmpty(text) && isEmpty(children)) {
+        return null
+    }
+
+    return <button onClick={onClickHandler} {...rest}>
+        <span>
+            {text}{children}
+        </span>
+    </button>;
+}
 
 Button.propTypes = {
     onClickHandler: PropTypes.func.isRequired,
