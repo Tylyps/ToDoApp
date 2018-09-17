@@ -29,12 +29,12 @@ class App extends Component {
           />
           <Button
             onClickHandler={this.addTask}
-            text={'Add'}
-          />
+          > Add
+          </Button>
         </div>
         <div className="app__list">
           <ul className="tasksList">
-            {tasks.map((text, id) => <li className="task" key={id}>{text}<Button className="removeButton" onClick={() => this.removeTask(id)} text={'Remove'} /></li>)}
+            {tasks.map((text, id) => <li className="task" key={id}>{text}<Button className="removeButton" onClickHandler={() => this.removeTask(id)}>Remove</Button></li>)}
           </ul>
         </div>
       </div>
