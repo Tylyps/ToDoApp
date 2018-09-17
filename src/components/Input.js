@@ -6,11 +6,13 @@ class Input extends Component {
     const {
         value,
         onChangeHandler,
+        name,
+        ...rest,
     } = this.props
     return (
         <div className='input'>
-            <label htmlFor='taskInput'>Input task:</label>
-            <input onChange={onChangeHandler} value={value} placeholder='Task to do' id='taskInput'></input>
+            <label htmlFor={name}>Input task:</label>
+            <input onChange={onChangeHandler} value={value} placeholder='Task to do' id={name} {...rest}/>
         </div>
     );
   }
@@ -19,6 +21,7 @@ class Input extends Component {
 Input.propTypes = {
     value: PropTypes.string,
     onChangeHandler: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
 }
 
 Input.defaultProps = {

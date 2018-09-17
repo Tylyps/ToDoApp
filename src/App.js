@@ -24,6 +24,7 @@ class App extends Component {
           <Input
             value={value}
             onChangeHandler={this.onChangeInputHandler}
+            name={'taskInput'}
           />
           <button onClick={this.addTask}>Add</button>
         </div>
