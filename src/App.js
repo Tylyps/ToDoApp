@@ -18,7 +18,7 @@ class App extends Component {
 
     return (
       <div className="app">
-        <Title title='ToDo App!!!'/>
+        <Title text='ToDo App!!!' tag='h3'/>
         <div className="app__input">
           <label>Input task:</label>
           <input onChange={this.onChangeInputHandler} value={value}></input>
