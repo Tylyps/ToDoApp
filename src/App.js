@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Title from './components/Title';
 import Input from './components/Input';
+import Button from './components/Button';
+import Plus from './templates/add.svg';
 
 class App extends Component {
   state = {
@@ -26,11 +28,14 @@ class App extends Component {
             onChangeHandler={this.onChangeInputHandler}
             name={'taskInput'}
           />
-          <button onClick={this.addTask}>Add</button>
+          <Button
+            onClickHandler={this.addTask}
+            text={'Add'}
+          ><img className='icon' src={Plus} alt='add'/></Button>
         </div>
         <div className="app__list">
           <ul className="tasksList">
-            {tasks.map((text, id) => <li className="task" key={id}>{text}<button className="removeButton" onClick={() => this.removeTask(id)}>Remove</button></li>)}
+            {tasks.map((text, id) => <li className="task" key={id}>{text}<Button className="removeButton" onClickHandler={() => this.removeTask(id)} text={'Remove'} /></li>)}
           </ul>
         </div>
       </div>
