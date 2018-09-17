@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Title from './components/Title'
+import Title from './components/Title';
+import Input from './components/Input';
 
 class App extends Component {
   state = {
@@ -19,9 +20,12 @@ class App extends Component {
     return (
       <div className="app">
         <Title text='ToDo App!!!' tag='h3'/>
-        <div className="app__input">
-          <label>Input task:</label>
-          <input onChange={this.onChangeInputHandler} value={value}></input>
+        <div>
+          <Input
+            value={value}
+            onChangeHandler={this.onChangeInputHandler}
+            name={'taskInput'}
+          />
           <button onClick={this.addTask}>Add</button>
         </div>
         <div className="app__list">
