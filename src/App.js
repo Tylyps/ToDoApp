@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Title from './components/Title'
 
 class App extends Component {
   state = {
@@ -17,7 +18,7 @@ class App extends Component {
 
     return (
       <div className="app">
-        <div className="app__title">ToDo App!!!!</div>
+        <Title text='ToDo App!!!' tag='h3'/>
         <div className="app__input">
           <label>Input task:</label>
           <input onChange={this.onChangeInputHandler} value={value}></input>

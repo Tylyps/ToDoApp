@@ -13,11 +13,6 @@
     grid-area: app;
     background: #EEE;
     text-align: center;
-    &__title {
-        font-size: 40px;
-        font-weight: 700;
-        text-shadow: $text-shadow;
-    }
     &__input {
         font-size: 20px;
         padding: 10px;
