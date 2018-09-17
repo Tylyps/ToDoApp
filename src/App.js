@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Title from './components/Title'
+import Title from './components/Title';
+import Input from './components/Input';
 
 class App extends Component {
   state = {
@@ -14,16 +15,12 @@ class App extends Component {
   onChangeInputHandler = event => this.setState({value: event.target.value})
 
   render() {
-    const { tasks, value } = this.state
+    const { tasks } = this.state
 
     return (
       <div className="app">
         <Title text='ToDo App!!!' tag='h3'/>
-        <div className="app__input">
-          <label>Input task:</label>
-          <input onChange={this.onChangeInputHandler} value={value}></input>
-          <button onClick={this.addTask}>Add</button>
-        </div>
+        <Input value={this.state.value} onChangeHandler={this.onChangeInputHandler.bind()} onClickHandler={this.addTask} />
         <div className="app__list">
           <ul className="tasksList">
             {tasks.map((text, id) => <li className="task" key={id}>{text}<button className="removeButton" onClick={() => this.removeTask(id)}>Remove</button></li>)}
