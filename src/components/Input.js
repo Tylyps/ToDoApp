@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Input extends Component {
-  onChangeInputHandler = event => this.props.onChangeHandler(event)
-
   render() {
+    const {
+        value,
+        onChangeHandler,
+    } = this.props
     return (
-        <div className="input">
-          <label>Input task:</label>
-          <input onChange={this.onChangeInputHandler} value={this.props.value} placeholder='Task to do'></input>
-          <button onClick={this.props.onClickHandler}>Add</button>
-        </div>
+        <React.Fragment>
+            <label htmlFor='taskInput'>Input task:</label>
+            <input onChange={onChangeHandler} value={value} placeholder='Task to do' id='taskInput'></input>
+        </React.Fragment>
     );
   }
 }
@@ -18,7 +19,6 @@ class Input extends Component {
 Input.propTypes = {
     value: PropTypes.string,
     onChangeHandler: PropTypes.func.isRequired,
-    onClickHandler: PropTypes.func.isRequired,
 }
 
 Input.defaultProps = {

@@ -15,12 +15,18 @@ class App extends Component {
   onChangeInputHandler = event => this.setState({value: event.target.value})
 
   render() {
-    const { tasks } = this.state
+    const { tasks, value } = this.state
 
     return (
       <div className="app">
         <Title text='ToDo App!!!' tag='h3'/>
-        <Input value={this.state.value} onChangeHandler={this.onChangeInputHandler.bind()} onClickHandler={this.addTask} />
+        <div className="input">
+          <Input
+            value={value}
+            onChangeHandler={this.onChangeInputHandler}
+          />
+          <button onClick={this.addTask}>Add</button>
+        </div>
         <div className="app__list">
           <ul className="tasksList">
             {tasks.map((text, id) => <li className="task" key={id}>{text}<button className="removeButton" onClick={() => this.removeTask(id)}>Remove</button></li>)}
