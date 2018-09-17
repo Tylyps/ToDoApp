@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="app">
         <Title text='ToDo App!!!' tag='h3'/>
-        <div className="input">
+        <div>
           <Input
             value={value}
             onChangeHandler={this.onChangeInputHandler}

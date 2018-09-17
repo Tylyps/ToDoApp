@@ -8,10 +8,10 @@ class Input extends Component {
         onChangeHandler,
     } = this.props
     return (
-        <React.Fragment>
+        <div className='input'>
             <label htmlFor='taskInput'>Input task:</label>
             <input onChange={onChangeHandler} value={value} placeholder='Task to do' id='taskInput'></input>
-        </React.Fragment>
+        </div>
     );
   }
 }
