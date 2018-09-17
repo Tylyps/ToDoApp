@@ -1,0 +1,42 @@
+#root{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
+    grid-template-areas: " . . . . "
+    " . app app ."
+    " . app app ."
+    " . . . . ";
+    min-height: 100vh;
+}
+
+.app{
+    grid-area: app;
+    background: #EEE;
+    text-align: center;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: 700;
+    text-shadow: 0px 2px 1px #F00, 2px 0px 1px #0F0, -2px 0px 1px #00F, 0px -2px 1px #F0F;
+}
+
+.textInput-block {
+    font-size: 20px;
+    padding: 10px;
+}
+.textInput-block input{
+    height: 20px;
+}
+.tasksList {
+    list-style-type: square;
+}
+.task {
+    margin: 20px 10px;
+}
+
+.removeButton {
+    color: #FFF;
+    background: #F00;
+    float: right;
+}
