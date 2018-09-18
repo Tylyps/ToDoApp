@@ -1,0 +1,11 @@
+.tasksList {
+    list-style-type: square;
+    .task {
+        margin: 20px 10px;
+        .removeButton {
+            color: #FFF;
+            background: #F00;
+            float: right;
+        }
+    }
+}
