@@ -1,0 +1,6 @@
+.task-list {
+    list-style-type: square;
+    &__item {
+        margin: 20px 10px;
+    }
+}

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import Plus from './templates/add.svg';
+
 import Title from './components/Title';
 import Input from './components/Input';
 import Button from './components/Button';
-import Plus from './templates/add.svg';
+import List from './components/List';
 
 class App extends Component {
   state = {
@@ -34,9 +36,14 @@ class App extends Component {
           ><img className='icon' src={Plus} alt='add'/></Button>
         </div>
         <div className="app__list">
-          <ul className="tasksList">
-            {tasks.map((text, id) => <li className="task" key={id}>{text}<Button className="removeButton" onClickHandler={() => this.removeTask(id)} text={'Remove'} /></li>)}
-          </ul>
+          <List
+            tab={tasks}
+            classListName={'task-list'}
+            classListItemName={'task-list__item'}
+            classButtonName={'removeButton'}
+            buttonHandler={this.removeTask}
+            buttonText={'Remove'}
+          />
         </div>
       </div>
     );
