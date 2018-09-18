@@ -39,6 +39,12 @@ List.propTypes = {
     children: PropTypes.node,
 }
 List.defaultProps = {
+    classListName: null,
+    classListItemName: null,
+    classButtonName: null,
+    buttonHandler: null,
+    buttonText: null,
+    children: null,
 }
 
 export default List;

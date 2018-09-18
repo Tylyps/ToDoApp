@@ -12,9 +12,10 @@ const List = ({ text, children, ...rest }) => {
 
 List.propTypes = {
     text: PropTypes.string.isRequired,
-    tag: PropTypes.string,
+    children: PropTypes.node,
 }
 List.defaultProps = {
+    children: null,
 }
 
 export default List;

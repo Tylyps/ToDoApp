@@ -11,9 +11,16 @@ body {
   margin-left: 5px;
 }
 button {
+
   span {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &.removeButton {
+      color: $color-white;
+      background: $color-red;
+      float: right;
   }
 }

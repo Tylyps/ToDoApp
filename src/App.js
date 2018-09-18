@@ -39,12 +39,11 @@ class App extends Component {
           <List
             tab={tasks}
             classListName={'tasksList'}
-            classListItemName={'task'}
+            classListItemName={'tasksList__item'}
             classButtonName={'removeButton'}
             buttonHandler={this.removeTask}
             buttonText={'Remove'}
-          >
-          </List>
+          />
         </div>
       </div>
     );
