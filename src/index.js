@@ -12,7 +12,6 @@ store.subscribe(() => {
     const state = store.getState();
     console.log(state);
 });
-console.log(store.getState())
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { addAction } from '../store/actions/exampleActions'
+import { addAction, multipleAction } from '../store/actions/exampleActions'
 
-const Counter = ({ counter, add }) => {
-    return (<div>Counter: {counter} <button onClick={add}>Add</button></div>)
+const Counter = ({ counter, add, multiple }) => {
+    const by = 1.5;
+    return (<div><button onClick={() => multiple(by)}>Multiple by {by}</button> Counter: {counter} <button onClick={add}>Add</button></div>)
 }
 
 const mapStateToProps = (state) => ({
@@ -12,5 +13,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     add: addAction,
+    multiple: multipleAction,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
