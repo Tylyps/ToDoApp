@@ -5,6 +5,7 @@ import Title from './components/Title';
 import Input from './components/Input';
 import Button from './components/Button';
 import List from './components/List';
+import Counter from './components/Counter';
 
 class App extends Component {
   state = {
@@ -45,6 +46,7 @@ class App extends Component {
             buttonText={'Remove'}
           />
         </div>
+        <Counter/>
       </div>
     );
   }
