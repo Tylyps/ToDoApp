@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Plus from './templates/add.svg';
 
 import Title from './components/Title';
@@ -6,13 +7,13 @@ import Input from './components/Input';
 import Button from './components/Button';
 import List from './components/List';
 import Counter from './components/Counter';
+import { addTask, removeTask } from './store/actions/listActions';
 
 class App extends Component {
   state = {
     tasks: ['something'],
     value: '',
   }
-
   addTask = () => this.setState(( prevState ) => Boolean(prevState.value.trimRight()) && !prevState.tasks.includes(prevState.value) ? prevState.tasks.push(prevState.value) : null)
 
   removeTask = idToRemove => this.setState(( prevState ) => ({tasks: prevState.tasks.filter((task, id) => id !== idToRemove )}))
@@ -21,6 +22,7 @@ class App extends Component {
 
   render() {
     const { tasks, value } = this.state
+    console.log(tasks);
 
     return (
       <div className="app">
@@ -52,4 +54,15 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+
+const mapStateToProps = (state) => ({
+    tasks: state.list.tasks,
+})
+
+const mapDispatchToProps = {
+    addTask: addTask,
+    removeTask: removeTask,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+

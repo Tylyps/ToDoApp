@@ -1,21 +1,19 @@
 const initialState = { tasks: [] };
 
-const listReducer = (state = initialState, action) => {
-    console.log(action)
+const list = (state = initialState, action) => {
     switch(action.type){
         case 'ADD_TASK':
             return {
                 ...state,
-                counter: state.counter + 1,
+                tasks: [...state.tasks, action.payload.value]
             }
         case 'REMOVE_TASK':
             return {
                 ...state,
-                counter: state.counter * action.by,
             }
         default:
             return state;
     }
 };
 
-export default listReducer;
+export default list;

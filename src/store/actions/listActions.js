@@ -1,8 +1,8 @@
 export const addTask = () => ({
-    type: 'ADD_ACTION'
+    type: 'ADD_TASK'
 });
 
 export const removeTask = by => ({
-    type: 'MULTIPLY_ACTION',
+    type: 'REMOVE_TASK',
     by
 });

@@ -1,11 +1,11 @@
 import { createStore, combineReducers } from 'redux';
 import exampleReducer from './reducers/exampleReducer';
-import listReducer from './reducers/listReducer';
+import list from './reducers/list';
 
 const storeConfig = () => {
     const store = createStore(combineReducers({
         exampleReducer,
-        listReducer,
+        list,
     }));
     return store;
 };
