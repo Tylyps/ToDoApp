@@ -1,7 +1,6 @@
 const initialState = { counter: 0 };
 
 const exampleReducer = (state = initialState, action) => {
-    console.log(action)
     switch(action.type){
         case 'ADD_ACTION':
             return {
