@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { addAction, multiplyAction } from '../store/actions/exampleActions'
+import { addAction, multiplyAction } from '../store/actions/exampleActions';
 
 const Counter = ({ counter, add, multiply }) => {
     const by = 1.5;
