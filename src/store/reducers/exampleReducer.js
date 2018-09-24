@@ -8,7 +8,7 @@ const exampleReducer = (state = initialState, action) => {
                 ...state,
                 counter: state.counter + 1,
             }
-        case 'MULTIPLE_ACTION':
+        case 'MULTIPLY_ACTION':
             return {
                 ...state,
                 counter: state.counter * action.by,

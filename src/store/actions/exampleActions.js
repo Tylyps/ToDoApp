@@ -2,7 +2,7 @@ export const addAction = () => ({
     type: 'ADD_ACTION'
 });
 
-export const multipleAction = by => ({
-    type: 'MULTIPLE_ACTION',
+export const multiplyAction = by => ({
+    type: 'MULTIPLY_ACTION',
     by
 });
