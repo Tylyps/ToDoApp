@@ -12,7 +12,11 @@ const List = ({
     buttonText,
     children,
     ...rest,
-}) => (
+}) => {
+    if(tab.length === 0) {
+        return (<div className='task-list--empty'>ToDo List Is Empty!</div>)
+    }
+    return (
     <ul className={classListName}>
       {tab.map((text, id) => (
         <ListItem
@@ -28,6 +32,7 @@ const List = ({
       )}
     </ul>
     );
+      };
 
 List.propTypes = {
     tab: PropTypes.array.isRequired,

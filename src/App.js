@@ -11,7 +11,6 @@ import { addTask, removeTask } from './store/actions/listActions';
 
 class App extends Component {
   state = {
-    tasks: ['something'],
     value: '',
   }
   addTask = () => Boolean(this.state.value.trimRight()) && !this.props.tasks.includes(this.state.value) ? this.props.addTask(this.state.value) : null
@@ -50,8 +49,6 @@ class App extends Component {
     );
   }
 }
-
-// export default App;
 
 const mapStateToProps = (state) => ({
     tasks: state.list.tasks,
