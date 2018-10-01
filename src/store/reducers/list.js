@@ -12,8 +12,7 @@ const list = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: [
-                    ...state.tasks.slice(0, action.payload.id),
-                    ...state.tasks.slice(action.payload.id + 1)
+                    ...state.tasks.filter((task, id) => id !== action.payload.id )
                 ]
             }
         default:

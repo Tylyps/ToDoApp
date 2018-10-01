@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Plus from './templates/add.svg';
+import {isEmpty} from 'lodash';
 
 import Title from './components/Title';
 import Input from './components/Input';
@@ -13,12 +14,16 @@ class App extends Component {
   state = {
     value: '',
   }
-  addTask = () => Boolean(this.state.value.trimRight()) && !this.props.tasks.includes(this.state.value) ? this.props.addTask(this.state.value) : null
+  addTask = () =>{
+    const { value } = this.state
+    return !isEmpty(value) && !this.props.tasks.includes(value) ? this.props.addTask(value) : null
+  }
 
   onChangeInputHandler = event => this.setState({value: event.target.value})
 
   render() {
     const { value } = this.state;
+    const { tasks } = this.props;
 
     return (
       <div className="app">
@@ -36,12 +41,13 @@ class App extends Component {
         </div>
         <div className="app__list">
           <List
-            tab={this.props.tasks}
+            tab={tasks}
             classListName={'task-list'}
             classListItemName={'task-list__item'}
             classButtonName={'removeButton'}
             buttonHandler={this.props.removeTask}
             buttonText={'Remove'}
+            isListEmpty={isEmpty(tasks)}
           />
         </div>
         <Counter/>

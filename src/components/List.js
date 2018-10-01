@@ -11,10 +11,11 @@ const List = ({
     buttonHandler,
     buttonText,
     children,
+    isListEmpty,
     ...rest,
 }) => {
-    if(tab.length === 0) {
-        return (<div className='task-list--empty'>ToDo List Is Empty!</div>)
+    if(isListEmpty) {
+        return (<div className='task-list__empty-msg'>ToDo List Is Empty!</div>)
     }
     return (
     <ul className={classListName}>
