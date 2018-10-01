@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Plus from './templates/add.svg';
-import {isEmpty} from 'lodash';
+import { isEmpty } from 'lodash';
+import classNames from 'classnames';
 
 import Title from './components/Title';
 import Input from './components/Input';
@@ -13,18 +14,33 @@ import { addTask, removeTask } from './store/actions/listActions';
 class App extends Component {
   state = {
     value: '',
+    isInputEmpty: false,
+    isValueExist: false,
   }
   addTask = () =>{
     const { value } = this.state
-    return !isEmpty(value) && !this.props.tasks.includes(value) ? this.props.addTask(value) : null
+    if (isEmpty(value)) {
+      this.setState({isInputEmpty: true})
+      return null
+    } else if (this.props.tasks.includes(value)) {
+      this.setState({isValueExist: true})
+      return null
+    } else {
+      this.setState({isInputEmpty: false, isValueExist: false})
+      return this.props.addTask(value)
+    }
   }
 
   onChangeInputHandler = event => this.setState({value: event.target.value})
 
   render() {
-    const { value } = this.state;
+    const {
+      value,
+      isInputEmpty,
+      isValueExist,
+    } = this.state;
     const { tasks } = this.props;
-
+    const inputClassName = classNames({input: true, isEmpty: isInputEmpty, isExist: isValueExist})
     return (
       <div className="app">
         <Title text='ToDo App!!!' tag='h3'/>
@@ -33,6 +49,7 @@ class App extends Component {
             value={value}
             onChangeHandler={this.onChangeInputHandler}
             name={'taskInput'}
+            className={inputClassName}
           />
           <Button
             onClickHandler={this.addTask}
