@@ -1,8 +1,15 @@
-export const addTask = () => ({
-    type: 'ADD_TASK'
+import {ADD_TASK, REMOVE_TASK} from '../variables';
+
+export const addTask = task => ({
+    type: ADD_TASK,
+    payload: {
+        task,
+    }
 });
 
-export const removeTask = by => ({
-    type: 'REMOVE_TASK',
-    by
+export const removeTask = id => ({
+    type: REMOVE_TASK,
+    payload: {
+        id,
+    }
 });

@@ -14,15 +14,12 @@ class App extends Component {
     tasks: ['something'],
     value: '',
   }
-  addTask = () => this.setState(( prevState ) => Boolean(prevState.value.trimRight()) && !prevState.tasks.includes(prevState.value) ? prevState.tasks.push(prevState.value) : null)
-
-  removeTask = idToRemove => this.setState(( prevState ) => ({tasks: prevState.tasks.filter((task, id) => id !== idToRemove )}))
+  addTask = () => Boolean(this.state.value.trimRight()) && !this.props.tasks.includes(this.state.value) ? this.props.addTask(this.state.value) : null
 
   onChangeInputHandler = event => this.setState({value: event.target.value})
 
   render() {
-    const { tasks, value } = this.state
-    console.log(tasks);
+    const { value } = this.state;
 
     return (
       <div className="app">
@@ -40,11 +37,11 @@ class App extends Component {
         </div>
         <div className="app__list">
           <List
-            tab={tasks}
+            tab={this.props.tasks}
             classListName={'task-list'}
             classListItemName={'task-list__item'}
             classButtonName={'removeButton'}
-            buttonHandler={this.removeTask}
+            buttonHandler={this.props.removeTask}
             buttonText={'Remove'}
           />
         </div>
