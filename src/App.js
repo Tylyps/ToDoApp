@@ -16,22 +16,24 @@ class App extends Component {
     value: '',
     isInputEmpty: false,
     isValueExist: false,
-  }
-  addTask = () =>{
-    const { value } = this.state
-    if (isEmpty(value)) {
-      this.setState({isInputEmpty: true})
-      return null
-    } else if (this.props.tasks.includes(value)) {
-      this.setState({isValueExist: true})
-      return null
-    } else {
-      this.setState({isInputEmpty: false, isValueExist: false})
-      return this.props.addTask(value)
-    }
-  }
+  };
 
-  onChangeInputHandler = event => this.setState({value: event.target.value})
+  addTask = () =>{
+    const { value } = this.state;
+    const { tasks, addTask } = this.props;
+    if (isEmpty(value)) {
+      this.setState({ isInputEmpty: true })
+      return null;
+    } else if (tasks.includes(value)) {
+      this.setState({ isValueExist: true })
+      return null;
+    } else {
+      this.setState({ isInputEmpty: false, isValueExist: false })
+      return addTask(value);
+    }
+  };
+
+  onChangeInputHandler = event => this.setState({ value: event.target.value });
 
   render() {
     const {
@@ -40,7 +42,7 @@ class App extends Component {
       isValueExist,
     } = this.state;
     const { tasks } = this.props;
-    const inputClassName = classNames({input: true, isEmpty: isInputEmpty, isExist: isValueExist})
+    const inputClassName = classNames({ input: true, 'is-empty': isInputEmpty, 'is-exist': isValueExist });
     return (
       <div className="app">
         <Title text='ToDo App!!!' tag='h3'/>
@@ -71,15 +73,15 @@ class App extends Component {
       </div>
     );
   }
-}
+};
 
 const mapStateToProps = (state) => ({
     tasks: state.list.tasks,
-})
+});
 
 const mapDispatchToProps = {
     addTask: addTask,
     removeTask: removeTask,
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

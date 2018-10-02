@@ -9,7 +9,7 @@
     }
 }
 
-.isExist::before {
+.is-exist::before {
     content: 'This task already exist';
     width: 200px;
     height: 20px;
@@ -20,7 +20,7 @@
     font-weight: bold;
 }
 
-.isEmpty::before {
+.is-empty::before {
     content: "Task can't be empty";
     width: 200px;
     height: 20px;

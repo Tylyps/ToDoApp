@@ -6,14 +6,12 @@ const list = (state = initialState, action) => {
         case ADD_TASK:
             return {
                 ...state,
-                tasks: [...state.tasks, action.payload.task]
+                tasks: [...state.tasks, action.payload.task],
             }
         case REMOVE_TASK:
             return {
                 ...state,
-                tasks: [
-                    ...state.tasks.filter((task, id) => id !== action.payload.id )
-                ]
+                tasks: state.tasks.filter((task, id) => id !== action.payload.id ),
             }
         default:
             return state;
