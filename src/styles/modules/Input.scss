@@ -9,24 +9,8 @@
     }
 }
 
-.is-exist::before {
-    content: 'This task already exist';
-    width: 200px;
-    height: 20px;
-    position: absolute;
-    bottom: 100%;
-    left: 50px;
-    color:red;
-    font-weight: bold;
-}
-
-.is-empty::before {
-    content: "Task can't be empty";
-    width: 200px;
-    height: 20px;
-    position: absolute;
-    bottom: 100%;
-    left: 50px;
-    color:red;
-    font-weight: bold;
+.is-error{
+    input{
+        outline: 2px solid $color-red;
+    }
 }
