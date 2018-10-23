@@ -1,9 +1,11 @@
-import {add_action, multiply_action} from '../variables';
+import {ADD_ACTION, MULTIPLY_ACTION} from '../variables';
 export const addAction = () => ({
-    type: add_action
+    type: ADD_ACTION
 });
 
 export const multiplyAction = by => ({
-    type: multiply_action,
-    by
+    type: MULTIPLY_ACTION,
+    payload: {
+        by
+    }
 });

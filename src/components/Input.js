@@ -7,10 +7,11 @@ class Input extends Component {
         value,
         onChangeHandler,
         name,
+        className,
         ...rest,
     } = this.props
     return (
-        <div className='input'>
+        <div className={className}>
             <label htmlFor={name}>Input task:</label>
             <input onChange={onChangeHandler} value={value} placeholder='Task to do' id={name} {...rest}/>
         </div>

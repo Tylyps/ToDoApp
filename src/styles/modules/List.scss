@@ -3,4 +3,10 @@
     &__item {
         margin: 20px 10px;
     }
+    &__empty-msg {
+        font-size: 20px;
+        padding: 20px;
+        font-weight: bold;
+        color: #555;
+    }
 }
