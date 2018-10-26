@@ -11,11 +11,12 @@ import List from './components/List';
 import Counter from './components/Counter';
 import ErrorMessage from './components/ErrorMessage';
 import { addTask, removeTask } from './store/actions/listActions';
+import { ERRORS } from './MessageStore'
 
 class App extends Component {
   state = {
     value: '',
-    isError: false,
+    hasError: false,
     errorMessage: '',
   };
 
@@ -23,27 +24,27 @@ class App extends Component {
     const { value } = this.state;
     const { tasks, addTask } = this.props;
     if (isEmpty(value)) {
-      this.setState({ isError: true, errorMessage: "Task can't be empty" })
+      this.setState({ hasError: true, errorMessage: ERRORS.empty_task })
       return null;
     } else if (tasks.includes(value)) {
-      this.setState({ isError: true, errorMessage: "That task already exist" })
+      this.setState({ hasError: true, errorMessage: ERRORS.exist_task })
       return null;
     } else {
-      this.setState({ isError: false, errorMessage: '' })
+      this.setState({ hasError: false, errorMessage: '' })
       return addTask(value);
     }
   };
 
-  onChangeInputHandler = event => this.setState({ value: event.target.value, isError: false, errorMessage: '' });
+  onChangeInputHandler = event => this.setState({ value: event.target.value, hasError: false, errorMessage: '' });
 
   render() {
     const {
       value,
-      isError,
+      hasError,
       errorMessage,
     } = this.state;
     const { tasks } = this.props;
-    const inputClassName = classNames({ input: true, 'is-error': isError, });
+    const inputClassName = classNames({ input: true, 'has-error': hasError, });
     return (
       <div className="app">
         <Title text='ToDo App!!!' tag='h3'/>

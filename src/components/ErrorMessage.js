@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {isEmpty} from 'lodash';
+import { isEmpty } from 'lodash';
 
-const ErrorMessage = ({ text, children, ...rest }) => {
-    if(isEmpty(text) && isEmpty(children)) {
+const ErrorMessage = ({ text }) => {
+    if(isEmpty(text)) {
         return null
     }
 
-   return  <div className="error" {...rest}>{text}</div>
+   return  <div className="error">{text}</div>
 };
+
+ErrorMessage.defaultProps = {
+}
 
 ErrorMessage.propTypes = {
     text: PropTypes.string.isRequired,
-    children: PropTypes.node,
 }
-ErrorMessage.defaultProps = {
-    children: null,
-}
+
 
 export default ErrorMessage;
