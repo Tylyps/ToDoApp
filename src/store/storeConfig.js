@@ -1,15 +1,16 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { save, load } from 'redux-localstorage-simple';
 import exampleReducer from './reducers/exampleReducer';
 import list from './reducers/list';
 
-const persistedState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')) : {}
-
 const storeConfig = () => {
-    const store = createStore(combineReducers({
-        exampleReducer,
-        list,
-    }),
-    persistedState,
+    const createStoreWithMiddleware = applyMiddleware(save())(createStore)
+    const store = createStoreWithMiddleware(
+        combineReducers({
+            exampleReducer,
+            list,
+        }),
+        load()
     );
     return store;
 };
