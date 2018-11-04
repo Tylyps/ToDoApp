@@ -10,12 +10,8 @@ const ErrorMessage = ({ text }) => {
    return  <div className="error">{text}</div>
 };
 
-ErrorMessage.defaultProps = {
-}
-
 ErrorMessage.propTypes = {
     text: PropTypes.string.isRequired,
 }
-
 
 export default ErrorMessage;
