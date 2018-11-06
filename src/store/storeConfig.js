@@ -1,16 +1,21 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { save, load } from 'redux-localstorage-simple';
+import thunk from 'redux-thunk';
 import exampleReducer from './reducers/exampleReducer';
 import list from './reducers/list';
 
+const logAction = store => next => action => {
+    const result = next(action);
+    console.log('TEST', JSON.stringify(result));
+    return result;
+}
+
 const storeConfig = () => {
-    const createStoreWithMiddleware = applyMiddleware(save())(createStore)
-    const store = createStoreWithMiddleware(
+    const store = createStore(
         combineReducers({
             exampleReducer,
             list,
         }),
-        load()
+        applyMiddleware(logAction)
     );
     return store;
 };
