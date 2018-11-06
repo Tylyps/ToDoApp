@@ -9,40 +9,42 @@ import Input from './components/Input';
 import Button from './components/Button';
 import List from './components/List';
 import Counter from './components/Counter';
+import ErrorMessage from './components/ErrorMessage';
 import { addTask, removeTask } from './store/actions/listActions';
+import { ERRORS } from './MessageStore'
 
 class App extends Component {
   state = {
     value: '',
-    isInputEmpty: false,
-    isValueExist: false,
+    hasError: false,
+    errorMessage: '',
   };
 
-  addTask = () =>{
+  addTask = () => {
     const { value } = this.state;
     const { tasks, addTask } = this.props;
     if (isEmpty(value)) {
-      this.setState({ isInputEmpty: true })
+      this.setState({ hasError: true, errorMessage: ERRORS.empty_task })
       return null;
     } else if (tasks.includes(value)) {
-      this.setState({ isValueExist: true })
+      this.setState({ hasError: true, errorMessage: ERRORS.exist_task })
       return null;
     } else {
-      this.setState({ isInputEmpty: false, isValueExist: false })
+      this.setState({ hasError: false, errorMessage: '' })
       return addTask(value);
     }
   };
 
-  onChangeInputHandler = event => this.setState({ value: event.target.value });
+  onChangeInputHandler = event => this.setState({ value: event.target.value, hasError: false, errorMessage: '' });
 
   render() {
     const {
       value,
-      isInputEmpty,
-      isValueExist,
+      hasError,
+      errorMessage,
     } = this.state;
     const { tasks } = this.props;
-    const inputClassName = classNames({ input: true, 'is-empty': isInputEmpty, 'is-exist': isValueExist });
+    const inputClassName = classNames({ input: true, 'has-error': hasError, });
     return (
       <div className="app">
         <Title text='ToDo App!!!' tag='h3'/>
@@ -57,6 +59,9 @@ class App extends Component {
             onClickHandler={this.addTask}
             text={'Add'}
           ><img className='icon' src={Plus} alt='add'/></Button>
+          <ErrorMessage
+            text={errorMessage}
+          />
         </div>
         <div className="app__list">
           <List
