@@ -9,7 +9,7 @@ import Input from './components/Input';
 import Button from './components/Button';
 import List from './components/List';
 import Counter from './components/Counter';
-import { addTask, removeTask } from './store/actions/listActions';
+import { startAddTask, startRemoveTask, startLoadTasks } from './store/actions/listActions';
 
 class App extends Component {
   state = {
@@ -18,9 +18,13 @@ class App extends Component {
     isValueExist: false,
   };
 
+  componentDidMount = () => {
+    this.props.startLoadTasks()
+  }
+
   addTask = () =>{
     const { value } = this.state;
-    const { tasks, addTask } = this.props;
+    const { tasks, startAddTask } = this.props;
     if (isEmpty(value)) {
       this.setState({ isInputEmpty: true })
       return null;
@@ -29,7 +33,7 @@ class App extends Component {
       return null;
     } else {
       this.setState({ isInputEmpty: false, isValueExist: false })
-      return addTask(value);
+      return startAddTask(value);
     }
   };
 
@@ -41,7 +45,7 @@ class App extends Component {
       isInputEmpty,
       isValueExist,
     } = this.state;
-    const { tasks } = this.props;
+    const { tasks, startRemoveTask } = this.props;
     const inputClassName = classNames({ input: true, 'is-empty': isInputEmpty, 'is-exist': isValueExist });
     return (
       <div className="app">
@@ -64,7 +68,7 @@ class App extends Component {
             classListName={'task-list'}
             classListItemName={'task-list__item'}
             classButtonName={'removeButton'}
-            buttonHandler={this.props.removeTask}
+            buttonHandler={startRemoveTask}
             buttonText={'Remove'}
             isListEmpty={isEmpty(tasks)}
           />
@@ -80,8 +84,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-    addTask: addTask,
-    removeTask: removeTask,
+    startAddTask: startAddTask,
+    startRemoveTask: startRemoveTask,
+    startLoadTasks: startLoadTasks,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

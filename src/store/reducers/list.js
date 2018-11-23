@@ -1,5 +1,5 @@
-import {ADD_TASK, REMOVE_TASK, SAVE} from '../variables';
-const initialState = JSON.parse(localStorage.getItem('list')) || { tasks: [] };
+import {ADD_TASK, REMOVE_TASK, LOAD_TASKS} from '../variables';
+const initialState = { tasks: [] };
 
 const list = (state = initialState, action) => {
     switch(action.type){
@@ -13,9 +13,11 @@ const list = (state = initialState, action) => {
                 ...state,
                 tasks: state.tasks.filter((task, id) => id !== action.payload.id ),
             }
-        case SAVE:
-            localStorage.setItem('list',JSON.stringify(state))
-            return {...state}
+        case LOAD_TASKS:
+            return {
+                ...state,
+                tasks: action.payload.tasks,
+            }
         default:
             return state;
     }
