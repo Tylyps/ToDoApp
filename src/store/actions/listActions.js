@@ -1,4 +1,5 @@
-import {ADD_TASK, REMOVE_TASK, LOAD_TASKS} from '../variables';
+import {ADD_TASK, REMOVE_TASK, LOAD_TASKS, TASKS} from '../variables';
+import { saveToLocalStorage, loadFromLoaclStorage } from '../../helper/localstorage';
 
 export const loadTasks = (tasks = []) => ({
     type: LOAD_TASKS,
@@ -10,10 +11,8 @@ export const loadTasks = (tasks = []) => ({
 
 export const startLoadTasks = () => (
     (dispach) => {
-        if(localStorage) {
-            const tasks = JSON.parse(localStorage.getItem('tasks'));
-            dispach(loadTasks(tasks));
-        }
+        const tasks = loadFromLoaclStorage(TASKS)
+        dispach(loadTasks(tasks));
     }
 )
 
@@ -28,9 +27,7 @@ export const addTask = task => ({
 export const startAddTask = task => (
     (dispach, getState) => {
         const { tasks } = getState().list
-        if(localStorage) {
-            localStorage.setItem('tasks', JSON.stringify([...tasks, task]))
-        }
+        saveToLocalStorage(TASKS, [...tasks, task]);
         dispach(addTask(task));
     }
 )
@@ -45,9 +42,7 @@ export const removeTask = id => ({
 export const startRemoveTask = id => (
     (dispach, getState) => {
         const tasks = getState().list.tasks.filter((task, taskId) => taskId !== id );
-        if(localStorage) {
-            localStorage.setItem('tasks', JSON.stringify(tasks))
-        }
+        saveToLocalStorage(TASKS, tasks);
         dispach(removeTask(id))
     }
 )
