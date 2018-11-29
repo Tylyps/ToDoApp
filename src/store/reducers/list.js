@@ -1,5 +1,5 @@
-import {ADD_TASK, REMOVE_TASK} from '../variables';
-const initialState = { tasks: ['First task'] };
+import {ADD_TASK, REMOVE_TASK, LOAD_TASKS} from '../variables';
+const initialState = { tasks: [] };
 
 const list = (state = initialState, action) => {
     switch(action.type){
@@ -12,6 +12,11 @@ const list = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: state.tasks.filter((task, id) => id !== action.payload.id ),
+            }
+        case LOAD_TASKS:
+            return {
+                ...state,
+                tasks: action.payload.tasks,
             }
         default:
             return state;
