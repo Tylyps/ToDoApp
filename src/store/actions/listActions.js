@@ -1,5 +1,5 @@
 import {ADD_TASK, REMOVE_TASK, LOAD_TASKS, TASKS} from '../variables';
-import { saveToLocalStorage, loadFromLoaclStorage } from '../../helper/localstorage';
+import { saveToLocalStorage, loadFromLocalStorage } from '../../helper/localstorage';
 
 export const loadTasks = (tasks = []) => ({
     type: LOAD_TASKS,
@@ -11,10 +11,10 @@ export const loadTasks = (tasks = []) => ({
 
 export const startLoadTasks = () => (
     (dispach) => {
-        const tasks = loadFromLoaclStorage(TASKS)
+        const tasks = loadFromLocalStorage(TASKS)
         dispach(loadTasks(tasks));
     }
-)
+);
 
 export const addTask = task => ({
     type: ADD_TASK,
@@ -30,7 +30,7 @@ export const startAddTask = task => (
         saveToLocalStorage(TASKS, [...tasks, task]);
         dispach(addTask(task));
     }
-)
+);
 
 export const removeTask = id => ({
     type: REMOVE_TASK,
@@ -40,9 +40,9 @@ export const removeTask = id => ({
 });
 
 export const startRemoveTask = id => (
-    (dispach, getState) => {
-        const tasks = getState().list.tasks.filter((task, taskId) => taskId !== id );
+    (dispach) => {
+        const tasks = loadFromLocalStorage(TASKS).filter((task, taskId) => taskId !== id );
         saveToLocalStorage(TASKS, tasks);
-        dispach(removeTask(id))
+        dispach(removeTask(id));
     }
-)
+);
